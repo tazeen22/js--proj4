@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Digital Clock</title>
+	<style>
+		/* Body styles with animated gradient background */
+		body {
+			margin: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-image: url(240_F_797870217_15PS1JlfBbfbLBxjDyi4o2XLPrwVVFQF.jpg);
+			background-repeat: no-repeat;
+			background-size:cover;
+			font-family: Arial, sans-serif;
+		}
+
+		
+		/* Styling the clock */
+		#clock {
+			font-size: 4rem;
+			color: white;
+			background-color: rgba(0, 0, 0, 0.5);
+			padding: 20px;
+			border: 4px solid white;
+			border-radius: 10px;
+			text-align: center;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+	</style>
+</head>
+<body>
+	<div id="clock">8:10:45</div>
+
+	<script>
+		// Calling showTime function at every second
+		setInterval(showTime, 1000);
+		
+		// Defining showTime function
+		function showTime() {
+			// Getting current time and date
+			let time = new Date();
+			let hour = time.getHours();
+			let min = time.getMinutes();
+			let sec = time.getSeconds();
+			let am_pm = "AM";
+		
+			// Setting time for 12 Hrs format
+			if (hour >= 12) {
+				if (hour > 12) hour -= 12;
+				am_pm = "PM";
+			} else if (hour == 0) {
+				hour = 12;
+				am_pm = "AM";
+			}
+		
+			hour = hour < 10 ? "0" + hour : hour;
+			min = min < 10 ? "0" + min : min;
+			sec = sec < 10 ? "0" + sec : sec;
+		
+			let currentTime = hour + ":" + min + ":" + sec + " " + am_pm;
+		
+			// Displaying the time
+			document.getElementById("clock").innerHTML = currentTime;
+		}
+		
+		showTime();
+	</script>
+</body>
+</html>
